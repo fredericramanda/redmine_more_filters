@@ -21,7 +21,7 @@
 
 module RedmineMoreFilters
   module Hooks
-    class IssueShow < Redmine::Hook::ViewListener
+    class IssueShowHook < Redmine::Hook::ViewListener
       def view_issues_show_description_bottom(context={ })
         context[:controller].send(:render_to_string, {
           :partial => 'hooks/redmine_more_filters/issue_show',
