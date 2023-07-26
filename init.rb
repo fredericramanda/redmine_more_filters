@@ -83,5 +83,8 @@ Redmine::Plugin.register :redmine_more_filters do
 
 end
 
-require "redmine_more_filters"
+if Rails.configuration.respond_to?(:autoloader) && Rails.configuration.autoloader == :zeitwerk
+  Rails.autoloaders.each { |loader| loader.ignore(File.dirname(__FILE__) + '/lib') }
+end
+require File.dirname(__FILE__) + '/lib/redmine_more_filters'
 
