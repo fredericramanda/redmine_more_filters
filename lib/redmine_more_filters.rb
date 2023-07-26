@@ -20,22 +20,23 @@
 #
 #
 
-# hooks
-require 'redmine_more_filters/hooks/header_hook'
-require 'redmine_more_filters/hooks/issue_show_hook'
-require 'redmine_more_filters/hooks/issue_context_menu_hook'
+REDMINE_MORE_FILTERS_REQUIRED_FILES = [
+  'redmine_more_filters/hooks/header_hook',
+  'redmine_more_filters/hooks/issue_show_hook',
+  'redmine_more_filters/hooks/issue_context_menu_hook',
+  'redmine_more_filters/patches/list_patch',
+  'redmine_more_filters/patches/user_patch',
+  'redmine_more_filters/patches/database_patch',
+  'redmine_more_filters/patches/query_column_patch',
+  'redmine_more_filters/patches/issue_patch',
+  'redmine_more_filters/patches/query_patch',
+  'redmine_more_filters/patches/issue_query_patch',
+  'redmine_more_filters/patches/queries_helper_patch',
+  'redmine_more_filters/patches/info_patch',
+  'redmine_more_filters/patches/gantt_patch',
+  'redmine_more_filters/patches/gantts_controller_patch'
+]
 
-# patches
-require 'redmine_more_filters/patches/list_patch'
-require 'redmine_more_filters/patches/user_patch'
-require 'redmine_more_filters/patches/database_patch'
-require 'redmine_more_filters/patches/query_column_patch'
-
-require 'redmine_more_filters/patches/issue_patch'
-require 'redmine_more_filters/patches/query_patch'          # after database_patch
-require 'redmine_more_filters/patches/issue_query_patch'    # after database_patch
-require 'redmine_more_filters/patches/queries_helper_patch'
-require 'redmine_more_filters/patches/info_patch'
-require 'redmine_more_filters/patches/gantt_patch'
-require 'redmine_more_filters/patches/gantts_controller_patch'
+base_url = File.dirname(__FILE__)
+REDMINE_MORE_FILTERS_REQUIRED_FILES.each { |file| require(base_url + '/' + file) }
 
