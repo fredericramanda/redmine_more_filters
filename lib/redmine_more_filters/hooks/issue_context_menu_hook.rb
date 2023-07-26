@@ -21,7 +21,7 @@
 
 module RedmineMoreFilters
   module Hooks
-    class IssueContextMenu < Redmine::Hook::ViewListener
+    class IssueContextMenuHook < Redmine::Hook::ViewListener
       def view_issues_context_menu_end(context={ })
         context[:controller].send(:render_to_string, {
           :partial => 'hooks/redmine_more_filters/issues_context_menu',
